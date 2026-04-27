@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    <title>Painel — Paula Fashion Fitness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <dialog id="dlg-product" class="modal" aria-labelledby="dlg-product-title">
+      <form id="form-product" class="modal__inner">
+        <h2 id="dlg-product-title" class="modal__title">Produto</h2>
+        <input type="hidden" name="id" id="field-id" value="" />
+
+        <label class="field">
+          <span>Nome</span>
+          <input type="text" name="name" id="field-name" required maxlength="200" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span>Categoria</span>
+          <select name="category" id="field-category" required></select>
+        </label>
+
+        <label class="field">
+          <span>Descrição</span>
+          <textarea name="description" id="field-description" rows="3" maxlength="4000"></textarea>
+        </label>
+
+        <label class="field">
+          <span>URL da imagem</span>
+          <input type="url" name="image_url" id="field-image_url" maxlength="2000" placeholder="https://..." />
+        </label>
+
+        <label class="field">
+          <span>SKU / referência</span>
+          <input type="text" name="sku" id="field-sku" maxlength="120" />
+        </label>
+
+        <label class="field field--inline">
+          <input type="checkbox" name="is_active" id="field-is_active" checked />
+          <span>Produto ativo (visível para uso futuro no site)</span>
+        </label>
+
+        <p class="form-error" id="form-error" hidden></p>
+
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost" id="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="btn-save">Salvar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="./admin.js"></script>
+  </body>
+</html>

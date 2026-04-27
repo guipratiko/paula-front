@@ -1,0 +1,56 @@
+/* Página de categoria — complemento ao styles.css */
+
+.page-categoria .categoria-page {
+  padding-top: calc(var(--header-h) + 2.5rem);
+  padding-bottom: 4rem;
+  min-height: 70vh;
+}
+
+.breadcrumb {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  margin: 0 0 1.25rem;
+}
+
+.breadcrumb a {
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-ink);
+}
+
+.categoria-alert {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  margin-bottom: 1.5rem;
+}
+
+.categoria-alert--error {
+  border-color: rgba(180, 80, 80, 0.35);
+  color: var(--color-rose-dark);
+}
+
+.categoria-empty {
+  text-align: center;
+  padding: 2.5rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-line);
+  background: var(--color-bg);
+  color: var(--color-muted);
+  max-width: 32rem;
+}
+
+.categoria-empty strong {
+  display: block;
+  color: var(--color-ink);
+  margin-bottom: 0.5rem;
+}
+
+.categoria-empty .btn {
+  margin-top: 1.25rem;
+}
