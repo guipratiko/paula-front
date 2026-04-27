@@ -1,5 +1,7 @@
+import { getApiPrefix } from "../js/apiBase.js";
+
 const TOKEN_KEY = "pff_admin_token";
-const API = "/api";
+const API = getApiPrefix();
 
 const CATEGORIES = [
   "Leggings",

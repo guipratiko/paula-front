@@ -1,4 +1,5 @@
 import "../js/config.js";
+import { apiUrl } from "../js/apiBase.js";
 import { wireWhatsAppLinks } from "../js/whatsappLinks.js";
 import { renderProductCard } from "../js/productCards.js";
 import { fetchCategories, isValidCategory } from "../js/categories.js";
@@ -62,7 +63,7 @@ async function run() {
   let data;
   try {
     const q = new URLSearchParams({ category });
-    const res = await fetch(`/api/products?${q}`, { headers: { Accept: "application/json" } });
+    const res = await fetch(apiUrl(`/api/products?${q}`), { headers: { Accept: "application/json" } });
     if (!res.ok) throw new Error("fetch");
     data = await res.json();
   } catch {

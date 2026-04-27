@@ -1,3 +1,4 @@
+import { apiUrl } from "./apiBase.js";
 import { renderProductCard } from "./productCards.js";
 
 /**
@@ -10,7 +11,7 @@ export async function initCatalog() {
 
   let data;
   try {
-    const res = await fetch("/api/products", { headers: { Accept: "application/json" } });
+    const res = await fetch(apiUrl("/api/products"), { headers: { Accept: "application/json" } });
     if (!res.ok) return;
     data = await res.json();
   } catch {

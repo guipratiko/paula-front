@@ -1,3 +1,5 @@
+import { apiUrl } from "./apiBase.js";
+
 /** Mesmas categorias do painel e da API (ordem = vitrine do site). */
 export const PRODUCT_CATEGORIES = [
   "Leggings",
@@ -18,7 +20,7 @@ export async function fetchCategories() {
   }
 
   try {
-    const res = await fetch("/api/categories", { headers: { Accept: "application/json" } });
+    const res = await fetch(apiUrl("/api/categories"), { headers: { Accept: "application/json" } });
     if (!res.ok) throw new Error("fetch");
     const data = await res.json();
     const apiCategories = Array.isArray(data?.categories)
