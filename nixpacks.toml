@@ -1,0 +1,5 @@
+# EasyPanel / Nixpacks — força fase de start (SPA estática após vite build)
+providers = ["node"]
+
+[start]
+cmd = "npm run start"
