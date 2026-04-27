@@ -49,7 +49,9 @@ async function run() {
   if (!category || !(await isValidCategory(category))) {
     alertEl.hidden = false;
     alertEl.textContent =
-      `Categoria não encontrada. Categorias disponíveis: ${categories.join(", ")}.`;
+      categories.length > 0
+        ? `Categoria não encontrada. Disponíveis: ${categories.join(", ")}.`
+        : "Nenhuma categoria publicada ainda. Sincronize produtos e categorias com o Bling no painel do servidor.";
     document.title = "Categoria — Paula Fashion Fitness";
     return;
   }

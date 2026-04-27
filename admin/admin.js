@@ -1,18 +1,7 @@
-import { getApiPrefix } from "../js/apiBase.js";
+import { getApiPrefix, apiUrl } from "../js/apiBase.js";
 
 const TOKEN_KEY = "pff_admin_token";
 const API = getApiPrefix();
-
-const CATEGORIES = [
-  "Leggings",
-  "Tops",
-  "Conjuntos Fitness",
-  "Shorts",
-  "Macacões",
-  "Croppeds",
-  "Jaquetas Fitness",
-  "Outros",
-];
 
 const app = document.getElementById("app");
 const dlg = document.getElementById("dlg-product");
@@ -72,10 +61,27 @@ async function api(path, options = {}) {
   return data;
 }
 
-function fillCategorySelect() {
-  fieldCategory.innerHTML = CATEGORIES.map(
-    (c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`
-  ).join("");
+async function fillCategoryDatalist() {
+  const listEl = document.getElementById("field-category-list");
+  if (!listEl) return;
+  listEl.innerHTML = "";
+  let names = [];
+  try {
+    const res = await fetch(apiUrl("/api/categories"), { headers: { Accept: "application/json" } });
+    if (res.ok) {
+      const data = await res.json();
+      names = Array.isArray(data?.categories) ? data.categories : [];
+    }
+  } catch {
+    /* API pública; painel segue sem sugestões se falhar */
+  }
+  for (const raw of names) {
+    const name = String(raw ?? "").trim();
+    if (!name) continue;
+    const opt = document.createElement("option");
+    opt.value = name;
+    listEl.appendChild(opt);
+  }
 }
 
 function escapeHtml(s) {
@@ -259,7 +265,7 @@ function openProductModal(product = null) {
   formError.textContent = "";
   fieldId.value = product?.id ?? "";
   fieldName.value = product?.name ?? "";
-  fieldCategory.value = product?.category && CATEGORIES.includes(product.category) ? product.category : CATEGORIES[0];
+  fieldCategory.value = product?.category ? String(product.category) : "";
   fieldDescription.value = product?.description ?? "";
   fieldImageUrl.value = product?.image_url ?? "";
   fieldSku.value = product?.sku ?? "";
@@ -306,7 +312,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 async function boot() {
-  fillCategorySelect();
+  await fillCategoryDatalist();
   const token = getToken();
   if (!token) {
     renderLogin("");

@@ -1,4 +1,5 @@
 import "./config.js";
+import { initCollectionCategories } from "./collectionCategories.js";
 import { initCatalog } from "./catalog.js";
 import { wireWhatsAppLinks } from "./whatsappLinks.js";
 
@@ -19,6 +20,7 @@ function initFooterFromConfig() {
   async function onReady() {
     wireWhatsAppLinks(document);
     initFooterFromConfig();
+    await initCollectionCategories();
     await initCatalog();
   }
 

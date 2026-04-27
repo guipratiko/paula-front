@@ -1,21 +1,16 @@
 import { apiUrl } from "./apiBase.js";
 
-/** Mesmas categorias do painel e da API (ordem = vitrine do site). */
-export const PRODUCT_CATEGORIES = [
-  "Leggings",
-  "Tops",
-  "Conjuntos Fitness",
-  "Shorts",
-  "Macacões",
-  "Croppeds",
-  "Jaquetas Fitness",
-  "Outros",
-];
-
 let cachedCategories = null;
 
+export function clearCategoriesCache() {
+  cachedCategories = null;
+}
+
+/**
+ * Categorias públicas (Bling + produtos ativos). Sem lista fixa no front.
+ */
 export async function fetchCategories() {
-  if (Array.isArray(cachedCategories) && cachedCategories.length > 0) {
+  if (Array.isArray(cachedCategories)) {
     return cachedCategories;
   }
 
@@ -26,16 +21,12 @@ export async function fetchCategories() {
     const apiCategories = Array.isArray(data?.categories)
       ? data.categories.map((item) => String(item ?? "").trim()).filter(Boolean)
       : [];
-    if (apiCategories.length > 0) {
-      cachedCategories = apiCategories;
-      return apiCategories;
-    }
+    cachedCategories = apiCategories;
+    return apiCategories;
   } catch {
-    // fallback para lista local quando a API não estiver disponível
+    cachedCategories = [];
+    return [];
   }
-
-  cachedCategories = PRODUCT_CATEGORIES;
-  return PRODUCT_CATEGORIES;
 }
 
 export async function isValidCategory(name) {

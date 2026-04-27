@@ -27,8 +27,18 @@
         </label>
 
         <label class="field">
-          <span>Categoria</span>
-          <select name="category" id="field-category" required></select>
+          <span>Categoria (Bling)</span>
+          <input
+            type="text"
+            name="category"
+            id="field-category"
+            list="field-category-list"
+            required
+            maxlength="400"
+            autocomplete="off"
+            placeholder="Igual ao cadastro no Bling, ex.: Vestuário > Leggings"
+          />
+          <datalist id="field-category-list"></datalist>
         </label>
 
         <label class="field">
