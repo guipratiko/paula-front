@@ -20,6 +20,11 @@ function initFooterFromConfig() {
   async function onReady() {
     wireWhatsAppLinks(document);
     initFooterFromConfig();
+    const heroVideo = document.querySelector(".hero__video");
+    if (heroVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      heroVideo.muted = true;
+      void heroVideo.play().catch(() => {});
+    }
     await initCollectionCategories();
     await initCatalog();
   }
