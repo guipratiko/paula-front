@@ -92,14 +92,30 @@
               <a class="btn btn--outline" href="#colecao">Ver Coleção</a>
             </div>
           </div>
-          <figure class="hero-visual" data-reveal>
+          <figure class="hero-visual" data-reveal aria-label="Vídeo mudo da coleção fitness no ambiente da marca">
+            <video
+              class="hero-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              disablepictureinpicture
+              preload="metadata"
+              poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80"
+              width="1200"
+              height="1500"
+            >
+              <source src="/img/banner.mp4" type="video/mp4" />
+            </video>
             <img
+              class="hero-video-fallback"
               src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80"
-              alt="Modelo com peças de moda fitness em ambiente clean"
+              alt=""
               width="1200"
               height="1500"
               loading="eager"
               fetchpriority="high"
+              decoding="async"
             />
             <figcaption class="hero-caption">Coleção · alto giro · fabricação própria</figcaption>
           </figure>

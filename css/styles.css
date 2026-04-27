@@ -388,10 +388,26 @@ h3 {
   box-shadow: var(--shadow-soft);
 }
 
+.hero-visual video,
 .hero-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.hero-visual .hero-video-fallback {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual .hero-video {
+    display: none;
+  }
+
+  .hero-visual .hero-video-fallback {
+    display: block;
+  }
 }
 
 .hero-visual::after {
