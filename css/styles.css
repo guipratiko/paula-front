@@ -430,7 +430,9 @@ body.nav-open .site-header:not(.is-scrolled) .nav-toggle span {
 .hero__video {
   display: block;
   width: 100%;
+  min-width: 100%;
   height: 100%;
+  min-height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -454,25 +456,17 @@ body.nav-open .site-header:not(.is-scrolled) .nav-toggle span {
   z-index: 2;
 }
 
-/* Vídeo ausente/erro de rede ou decode: mesmo visual do modo “reduzir movimento”. */
+/* Vídeo ausente / erro de carregamento: fundo sólido (sem vídeo). */
 .hero__media.hero__media--fallback .hero__video {
   display: none;
 }
 
 .hero__media.hero__media--fallback {
-  background: #1a1a1a url("https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80")
-    center / cover no-repeat;
+  background: linear-gradient(145deg, #141010 0%, #2a2224 42%, #1a1618 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__video {
-    display: none;
-  }
-
-  .hero__media {
-    background: #1a1a1a url("https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80")
-      center / cover no-repeat;
-  }
+  /* Vídeo do hero: mantém-se visível (muted); “reduzir movimento” aplica-se às transições da página. */
 
   /* Fallback se JS não rodar: blocos [data-reveal] não podem ficar invisíveis (opacity: 0). */
   [data-reveal] {

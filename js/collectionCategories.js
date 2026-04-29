@@ -83,8 +83,7 @@ export async function initCollectionCategories() {
 
   wireWhatsAppLinks(root);
 
-  /* Cards entram após o observer de reveal do main — exibe sem depender do IntersectionObserver. */
-  root.querySelectorAll("[data-reveal]").forEach((el) => {
-    el.classList.add("is-visible");
-  });
+  if (typeof window.__pffFlushReveal === "function") {
+    requestAnimationFrame(() => window.__pffFlushReveal());
+  }
 }
