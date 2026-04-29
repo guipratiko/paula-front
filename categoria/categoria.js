@@ -2,6 +2,7 @@ import { loadSiteConfigFromApi } from "../js/config.js";
 import { apiUrl } from "../js/apiBase.js";
 import { wireWhatsAppLinks } from "../js/whatsappLinks.js";
 import { renderProductCard } from "../js/productCards.js";
+import { wireProductGallery } from "../js/productGallery.js";
 import { fetchCategories, isValidCategory } from "../js/categories.js";
 
 const params = new URLSearchParams(window.location.search);
@@ -88,6 +89,8 @@ async function run() {
   gridEl.hidden = false;
   emptyEl.hidden = true;
   gridEl.innerHTML = products.map(renderProductCard).join("");
+  wireProductGallery(gridEl, () => products);
+  wireWhatsAppLinks(document);
 }
 
 if (document.readyState === "loading") {

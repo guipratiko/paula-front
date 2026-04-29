@@ -2,6 +2,7 @@ import { apiUrl } from "./apiBase.js";
 import { fetchCategories } from "./categories.js";
 import { renderProductCard } from "./productCards.js";
 import { wireWhatsAppLinks } from "./whatsappLinks.js";
+import { wireProductGallery } from "./productGallery.js";
 
 /** @type {Array<Record<string, unknown>>} */
 let allProducts = [];
@@ -230,5 +231,6 @@ export async function initCatalog() {
 
   wireToolbar();
   wireHeaderSearch();
+  wireProductGallery(root, () => allProducts);
   applyFiltersAndRender();
 }

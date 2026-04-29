@@ -312,6 +312,34 @@
       </section>
     </main>
 
+    <dialog id="product-gallery-dialog" class="product-gallery-dialog" aria-labelledby="product-gallery-heading">
+      <div class="product-gallery__panel">
+        <button type="button" class="product-gallery__close" data-gallery-close aria-label="Fechar galeria">×</button>
+        <header class="product-gallery__head">
+          <p class="product-gallery__category section-kicker" data-gallery-category></p>
+          <h2 id="product-gallery-heading" class="product-gallery__title" data-gallery-title></h2>
+          <p class="product-gallery__desc" data-gallery-desc></p>
+        </header>
+        <div class="product-gallery__stage-wrap">
+          <button type="button" class="product-gallery__nav product-gallery__nav--prev" data-gallery-prev aria-label="Foto anterior">
+            ‹
+          </button>
+          <div class="product-gallery__stage">
+            <img data-gallery-main src="" alt="" width="900" height="1200" decoding="async" />
+          </div>
+          <button type="button" class="product-gallery__nav product-gallery__nav--next" data-gallery-next aria-label="Foto seguinte">
+            ›
+          </button>
+        </div>
+        <div class="product-gallery__thumbs-wrap">
+          <div class="product-gallery__thumbs" data-gallery-thumbs role="tablist" aria-label="Miniaturas"></div>
+        </div>
+        <div class="product-gallery__actions">
+          <a class="btn btn--primary" data-gallery-wa href="#">Consultar atacado</a>
+        </div>
+      </div>
+    </dialog>
+
     <footer class="site-footer" id="contato" role="contentinfo">
       <div class="container footer-grid">
         <div class="footer-brand" data-reveal>

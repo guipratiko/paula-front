@@ -23,6 +23,11 @@ function productWhatsAppHref(p) {
   return wa(msg);
 }
 
+/** Link WhatsApp pré-preenchido para o produto (galeria e cards). */
+export function getProductWhatsAppHref(p) {
+  return productWhatsAppHref(p);
+}
+
 export function renderProductCard(p) {
   const img = safeImageUrl(p.image_url);
   const rawDesc = String(p.description ?? "").trim();
@@ -34,12 +39,13 @@ export function renderProductCard(p) {
     ? `<p class="card-catalog__sku">Ref. ${escapeHtml(p.sku)}</p>`
     : "";
   const href = productWhatsAppHref(p);
+  const pid = p.id != null && p.id !== "" ? String(p.id) : "";
 
   return `
-    <article class="card-catalog catalog-product-card">
-      <div class="card-catalog__media">
+    <article class="card-catalog catalog-product-card" data-product-id="${escapeHtml(pid)}">
+      <button type="button" class="card-catalog__media card-catalog__media-btn" aria-label="Ver todas as fotos — ${escapeHtml(p.name)}">
         <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)}" width="800" height="1067" loading="lazy" />
-      </div>
+      </button>
       <div class="card-catalog__body">
         <p class="section-kicker" style="margin:0 0 0.35rem;font-size:0.65rem">${escapeHtml(p.category)}</p>
         <h3 class="card-catalog__title">${escapeHtml(p.name)}</h3>
