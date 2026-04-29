@@ -39,12 +39,21 @@ export default defineConfig({
         main: path.resolve(__dirname, "index.html"),
         admin: path.resolve(__dirname, "admin/index.html"),
         categoria: path.resolve(__dirname, "categoria/index.html"),
+        politica: path.resolve(__dirname, "politica-de-privacidade/index.html"),
+        sobre: path.resolve(__dirname, "sobre-a-marca/index.html"),
       },
     },
   },
   server: {
     port: 5173,
-    allowedHosts: ["scancal.com.br", "www.scancal.com.br", "localhost", "127.0.0.1"],
+    allowedHosts: [
+      "scancal.com.br",
+      "www.scancal.com.br",
+      "paulafashion.com.br",
+      "www.paulafashion.com.br",
+      "localhost",
+      "127.0.0.1",
+    ],
     proxy: {
       "/api": {
         target: "http://127.0.0.1:3001",
@@ -53,6 +62,13 @@ export default defineConfig({
     },
   },
   preview: {
-    allowedHosts: ["scancal.com.br", "www.scancal.com.br", "localhost", "127.0.0.1"],
+    allowedHosts: [
+      "scancal.com.br",
+      "www.scancal.com.br",
+      "paulafashion.com.br",
+      "www.paulafashion.com.br",
+      "localhost",
+      "127.0.0.1",
+    ],
   },
 });

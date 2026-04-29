@@ -5,7 +5,11 @@ import { apiUrl } from "./apiBase.js";
  * Em runtime, `loadSiteConfigFromApi()` sobrepõe com GET /api/site-config do backend.
  */
 export const PFF_CONFIG = {
-  whatsappNumber: "5511999999999", // DDD + número; wa.me usa só dígitos
+  whatsappNumber: "5511999999999",
+  siteBrandLine: "Paula Fashion | Fitness",
+  legalLine: "",
+  phoneLandline: "",
+  facebookUrl: "https://www.facebook.com/paulafitness/",
   whatsappMessages: {
     default:
       "Olá! Sou lojista/revendedor e gostaria de consultar condições de atacado na Paula Fashion Fitness.",
@@ -46,6 +50,14 @@ export async function loadSiteConfigFromApi() {
     if (data.instagram) cfg.instagram = String(data.instagram).trim();
     if (data.email) cfg.email = String(data.email).trim();
     if (data.address != null) cfg.address = String(data.address).trim();
+    if (data.siteBrandLine != null && String(data.siteBrandLine).trim() !== "") {
+      cfg.siteBrandLine = String(data.siteBrandLine).trim();
+    }
+    if (data.legalLine != null) cfg.legalLine = String(data.legalLine).trim();
+    if (data.phoneLandline != null) cfg.phoneLandline = String(data.phoneLandline).trim();
+    if (data.facebookUrl != null && String(data.facebookUrl).trim() !== "") {
+      cfg.facebookUrl = String(data.facebookUrl).trim();
+    }
 
     const wm = data.whatsappMessages;
     if (wm && typeof wm === "object") {

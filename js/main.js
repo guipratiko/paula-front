@@ -1,4 +1,5 @@
 import { loadSiteConfigFromApi } from "./config.js";
+import { initSiteFooter } from "./siteFooter.js";
 import { initCollectionCategories } from "./collectionCategories.js";
 import { initCatalog } from "./catalog.js";
 import { wireWhatsAppLinks } from "./whatsappLinks.js";
@@ -127,26 +128,13 @@ function createRevealScrollController() {
   return flush;
 }
 
-function initFooterFromConfig() {
-  const cfg = window.PFF_CONFIG;
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-  if (!cfg) return;
-  const ig = document.getElementById("link-instagram");
-  if (ig && cfg.instagram) ig.href = cfg.instagram;
-  const em = document.getElementById("link-email");
-  if (em && cfg.email) em.href = `mailto:${cfg.email}`;
-  const ad = document.getElementById("footer-address");
-  if (ad && cfg.address) ad.textContent = cfg.address;
-}
-
 (function () {
   let revealFlush = () => {};
 
   async function onReady() {
     await loadSiteConfigFromApi();
     wireWhatsAppLinks(document);
-    initFooterFromConfig();
+    initSiteFooter();
     await initCollectionCategories();
     await initCatalog();
     revealFlush();
