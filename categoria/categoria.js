@@ -1,4 +1,4 @@
-import "../js/config.js";
+import { loadSiteConfigFromApi } from "../js/config.js";
 import { apiUrl } from "../js/apiBase.js";
 import { wireWhatsAppLinks } from "../js/whatsappLinks.js";
 import { renderProductCard } from "../js/productCards.js";
@@ -43,6 +43,7 @@ function setupNav() {
 
 async function run() {
   setupNav();
+  await loadSiteConfigFromApi();
   wireWhatsAppLinks(document);
 
   const categories = await fetchCategories();

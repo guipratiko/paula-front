@@ -1,4 +1,4 @@
-import "./config.js";
+import { loadSiteConfigFromApi } from "./config.js";
 import { initCollectionCategories } from "./collectionCategories.js";
 import { initCatalog } from "./catalog.js";
 import { wireWhatsAppLinks } from "./whatsappLinks.js";
@@ -144,6 +144,7 @@ function initFooterFromConfig() {
   let revealFlush = () => {};
 
   async function onReady() {
+    await loadSiteConfigFromApi();
     wireWhatsAppLinks(document);
     initFooterFromConfig();
     await initCollectionCategories();
