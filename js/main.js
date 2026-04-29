@@ -64,10 +64,14 @@ function initFooterFromConfig() {
     header.classList.toggle("is-scrolled", window.scrollY > 24);
   });
 
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (prefersReduced.matches) return;
-
   const revealEls = document.querySelectorAll("[data-reveal]");
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  /* Sem animação: conteúdo precisa ficar visível ([data-reveal] começa com opacity: 0 no CSS). */
+  if (prefersReduced.matches) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
   if (!revealEls.length || !("IntersectionObserver" in window)) {
     revealEls.forEach((el) => el.classList.add("is-visible"));
     return;
